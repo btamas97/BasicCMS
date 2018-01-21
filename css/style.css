@@ -17,3 +17,33 @@
     font-family: din_bold;
     src: url('fonts/din_bold.ttf') format('truetype');
 }
+
+*,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+form {
+  width: 320px;
+  margin: 45px auto;
+}
+form h1 {
+  font-size: 3em;
+  font-weight: 300;
+  text-align: center;
+  color: #2196F3;
+}
+form h5 {
+  text-align: center;
+  text-transform: uppercase;
+  color: #c6c6c6;
+}
+form hr.sep {
+  background: #2196F3;
+  box-shadow: none;
+  border: none;
+  height: 2px;
+  width: 25%;
+  margin: 0px auto 45px auto;
+}
