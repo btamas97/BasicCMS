@@ -36,6 +36,19 @@
         </form>
       </div>
     </div>
+    <div id="content" class="din-normal">
+      <div id="MDlist" class="">
+      <div id="ListElement" class="">
+        <div class="titleContentPic">
+          <img src="img/placeholder.png" alt="placeholder" width="140" height="140">
+        </div>
+        <div class="titleContent">
+          <a class="din-bold Title">Lorem ipsum dolor sit amet</a>
+          <p class="din-light DateAuthor">Baráth Tamás- 2018.01.21</p>
+          <p class="din-normal Content">Fusce id turpis efficitur, luctus dolor et, faucibus massa. Vestibulum lacinia vitae ex id elementum. Nulla gravida sapien mollis eros pellentesque, sit amet dignissim velit feugiat. Morbi justo quam, feugiat vel elementum sed, rhoncus vitae turpis. In lacinia, orci vitae vulputate aliquet, risus sem lacinia nulla, non vestibulum purus lacus non leo. Nulla facilisi. Phasellus eget gravida nisi... </p>
+        </div>
+      </div>
+    </div>
   </body>
   <script>
     document.getElementById("contribute").onclick = showLogin;
