@@ -264,3 +264,67 @@ a:visited:hover {
   color: #007ce2;
   cursor: pointer;
 }
+
+#header {
+  height: 40px;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: #abb2b7;
+  font-size: 30px;
+  background-color: #282c34;
+  background: rgba(16, 17, 20, 0.7);
+  position: fixed;
+  z-index:2000;
+  width:100%;
+  top:0;
+  left:0;
+}
+
+#content {
+  margin-top: 50px;
+  text-align: justify;
+  text-justify: inter-word;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+#logo_name {
+  float: left;
+  margin-left: 5px;
+}
+
+#login {
+  position: relative;
+  top: 18%;
+  margin-right: 10px;
+}
+
+#LoginWindow {
+  width: 350px;
+  height: 280px;
+  background-color: #282c34;
+  border-width: 0px 0px 5px 0px;
+  border-color: #007ce2;
+  border-style: solid;
+  display: none;
+  margin-right: 10px;
+  position:absolute;
+  right: 0;
+  box-shadow: 0px 0px 15px black;
+}
+
+#MDlist {
+  margin: auto;
+  width: 50%;
+  width: 710px;
+}
+
+#ListElement {
+  background-color: #282c34;
+  height: 155px;
+  border-width: 0px 0px 5px 0px;
+  border-color: #007ce2;
+  border-style: solid;
+  margin-bottom: 15px;
+}
