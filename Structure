@@ -1,0 +1,50 @@
+Site structure:
+Navbar(on all pages):
+  - logo
+      - navigates to index
+  - menu when not logged in
+      - Log in
+      - Register
+      - Main page
+  -menu when logged in:
+      - Main page
+      - Upload
+      - Admin page
+      - Log out
+      - Display "Hi [user]!"
+      
+Index page:
+  - navbar
+  - list of article previews
+      - clickable title
+      - thumbnail
+      - author
+      - date
+      - 350 character long preview text
+      
+Admin page:
+  - like index
+  - edit button
+  - delete button
+  
+Upload page:
+  - navbar
+  - textbox for title
+  - textarea for article
+  - browse button for file upload
+ 
+Edit page:
+  - navbar
+  - textbox for title
+  - textarea for article
+  - browse button for file upload
+  - previously typed things displayed
+ 
+Article page:
+  - navbar
+  - title
+  - author
+  - date
+  - full content
+  - back to top button
+  - back to main page button
