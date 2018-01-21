@@ -40,23 +40,23 @@
         </form>
       </div>
     </div>
-    <div id="content" class="din-normal">
-      <?php foreach ($articles as $article) {?>
-      <div id="MDlist" class="">
-        <div id="ListElement" class="">
-          <div class="titleContentPic">
-            <img src="<?php echo $article['picture']; ?>" alt="thumbnail" width="140" height="140">
-          </div>
-          <div class="titleContent">
-            <a href="article.php?id=<?php echo $article['id']; ?>" class="din-bold Title"> <?php echo $article['title']; ?></a>
-            <p class="din-light DateAuthor"><?php echo $article['author']." - ".$article['date']; ?> </p>
-            <p class="din-normal Content">
-              <?php echo shorten($article['text']); ?></p>
+    <?php foreach ($articles as $article) {?>
+      <div id="content" class="din-normal">
+        <div id="MDlist" class="">
+          <div id="ListElement" class="">
+            <div class="titleContentPic">
+              <img src="<?php echo $article['picture']; ?>" alt="thumbnail" width="140" height="140">
+            </div>
+            <div class="titleContent">
+              <a href="articleViewer.php?id=<?php echo $article['id']; ?>" class="din-bold Title"> <?php echo $article['title']; ?></a>
+              <p class="din-light DateAuthor"><?php echo $article['author']." - ".$article['date']; ?> </p>
+              <p class="din-normal Content">
+                <?php echo shorten($article['text']); ?></p>
+            </div>
           </div>
         </div>
       </div>
     <?php } ?>
-    </div>
   </body>
   <script>
     document.getElementById("contribute").onclick = showLogin;
