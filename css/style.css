@@ -158,8 +158,32 @@ label {
   background: #b4b4b4;
   color: #eeeeee;
 }
-
 .btn-box {
   text-align: center;
   margin: 50px 0;
+}
+.din-normal {
+  font-family: din_normal;
+}
+
+.din-light {
+  font-family: din_light;
+}
+
+.din-medium {
+  font-family: din_medium;
+}
+
+.din-bold {
+  font-family: din_bold;
+}
+
+.logo {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.version {
+  font-size: 15px;
+  vertical-align: bottom;
 }
