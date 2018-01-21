@@ -188,6 +188,46 @@ label {
   vertical-align: bottom;
 }
 
+.titleContentPic {
+  display: inline-block;
+  margin-top: 0px;
+  vertical-align: top;
+  float: left;
+  margin-right: 5px;
+}
+
+.titleContent {
+  display: inline-block;
+  margin-top: 0px;
+  vertical-align: top;
+  margin-right: 5px;
+  width: 550px;
+}
+
+.Title {
+  font-size: 25px;
+}
+
+.DateAuthor {
+  font-size: 13px;
+}
+
+.Content {
+  font-size: 15px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.contribute {
+  float: right;
+  font-size: 20px;
+}
+
+.contribute hover {
+  color: #61afef;
+}
+
+
 body {
   background-color: #21252b;
   color: #abb2b7;
