@@ -101,6 +101,10 @@ label {
   transition: 300ms ease all;
 }
 
+li{
+  display: inline;
+}
+
 .bar {
   position: relative;
   display: block;

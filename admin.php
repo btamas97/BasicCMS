@@ -1,6 +1,11 @@
 <?php
- include_once('connect.php');
- ?>
+  session_start();
+  include_once('connect.php');
+  if (!isset($_SESSION['logged_in'])); {
+    header('location: index.php');
+  }
+  else{
+?>
 <html>
   <head>
     <meta charset="utf-8">
@@ -16,24 +21,10 @@
       </div>
       <div id="login">
         <a id='contribute' class='din-normal contribute'>Contribute</a>
-      </div>
-    </div>
-    <div id="LoginWindow">
-      <div class="wrapper">
-        <form action=index.php method="post" autocomplete="off" >
-          <div class="group">
-            <input type="text" name="uname" required="required"/><span class="highlight"></span><span class="bar"></span>
-            <label>Username</label>
-          </div>
-          <div class="group">
-            <input type="password" name="pwd" required="required"/><span class="highlight"></span><span class="bar"></span>
-            <label>Password</label>
-          </div>
-          <div class="btn-box">
-            <button class="btn btn-submit" name="btn_login" type="submit">Login</button>
-            <button class="btn btn-cancel" name="btn_register" type="submit">Registration</button>
-          </div>
-        </form>
+        <li><a id='contribute' class='din-normal contribute' href="admin.php">Main page</a><li>
+        <li><a id='contribute' class='din-normal contribute' href="upload.php">Upload</a><li>
+        <li><p id='contribute' class='din-normal contribute'> Hi <?php echo $_SESSION['username'];?>!</php>
+        <li><a id='contribute' class='din-normal contribute' href="logout.php">Log out</a><li>
       </div>
     </div>
     <div id="content" class="din-normal">
@@ -50,21 +41,5 @@
       </div>
     </div>
   </body>
-  <script>
-    document.getElementById("contribute").onclick = showLogin;
-
-    var isShown = false;
-    function showLogin() {
-      if (isShown == false) {
-        document.getElementById('LoginWindow').style.display = "block";
-        isShown = true;
-        exit();
-      }
-
-    if (isShown == true) {
-      document.getElementById('LoginWindow').style.display = "none";
-      isShown = false;
-    }
-  }
-</script>
 </html>
+<?php } ?>
