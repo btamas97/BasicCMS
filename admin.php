@@ -4,7 +4,6 @@
   if (!isset($_SESSION['logged_in'])); {
     header('location: index.php');
   }
-  else{
 ?>
 <html>
   <head>
@@ -20,7 +19,6 @@
         <a class="din-normal logo">Basic<p class="din-bold logo">CMS</a><p class="din-light logo version">v0.1</p>
       </div>
       <div id="login">
-        <a id='contribute' class='din-normal contribute'>Contribute</a>
         <li><a id='contribute' class='din-normal contribute' href="admin.php">Main page</a><li>
         <li><a id='contribute' class='din-normal contribute' href="upload.php">Upload</a><li>
         <li><p id='contribute' class='din-normal contribute'> Hi <?php echo $_SESSION['username'];?>!</php>
@@ -42,4 +40,3 @@
     </div>
   </body>
 </html>
-<?php } ?>

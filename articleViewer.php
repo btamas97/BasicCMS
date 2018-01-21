@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include_once('connect.php');
   include_once('article.php');
 
@@ -7,6 +8,47 @@
   if(isset($_GET['id'])){
     $id = $_GET['id'];
     $data = $article->fetch_data($id);
+
+    if($_SERVER['REQUEST_METHOD']=='POST')
+     {
+       if(isset($_POST['username'], $_POST['password']))
+       {
+         $username = $_POST['username'];
+         $password = password_hash($_post['password'], PASSWORD_BCRYPT);
+
+   		  if (isset($_POST['btn_login']))
+   		  {
+           $query = $pdo->prepare("SELET * FROM cms_users WHERE username = ? AND password = ?");
+           $query->bindValue(1,$username);
+           $query->bindValue(2,$password);
+           $query->execute();
+           $num = $query->rowCount();
+           if (!num==1) {
+             $error = 'Incorrect username or password!';
+           }
+           else {
+             header('location: index.php');
+           }
+         }
+   		  else if (isset($_POST['btn_register']))
+   		  {
+           $query = $pdo->prepare("SELET * FROM cms_users WHERE username = ?");
+           $query->bindValue(1,$username);
+           $query->execute();
+           $num = $query->rowCount();
+           if (num>0) {
+             $error = 'Username already occupied!';
+           }
+           else {
+             $query = $db->prepare("INSERT INTO cms_users(username,password) VALUES(:ufield,:pfield)");
+             $query->bindValue(':ufield',$user,PDO::PARAM_STR);
+             $query->bindValue(':pfield',$password,PDO::PARAM_STR);
+             $query->execute();
+             header("location: admin.php");
+           }
+   		  }
+       }
+     }
     ?>
     <html>
       <head>
@@ -22,7 +64,15 @@
             <a class="din-normal logo">Basic<p class="din-bold logo">CMS</a><p class="din-light logo version">v0.1</p>
           </div>
           <div id="login">
-            <a id='contribute' class='din-normal contribute'>Contribute</a>
+            <?php if (isset($_SESSION['logged_in'])) { ?>
+              <li><a id='contribute' class='din-normal contribute' href="admin.php">Main page</a><li>
+              <li><a id='contribute' class='din-normal contribute' href="upload.php">Upload</a><li>
+              <li><p id='contribute' class='din-normal contribute'> Hi <?php echo $_SESSION['username'];?>!</php>
+              <li><a id='contribute' class='din-normal contribute' href="logout.php">Log out</a><li>
+          <?php  }
+            else{ ?>
+              <a id='contribute' class='din-normal contribute'>Contribute</a>
+          <?php  } ?>
           </div>
         </div>
         <div id="LoginWindow">

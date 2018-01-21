@@ -1,9 +1,51 @@
 <?php
+ session_start();
  include_once('connect.php');
  include_once('article.php');
 
  $article = new Article;
  $articles = $article->fetch_all();
+
+ if($_SERVER['REQUEST_METHOD']=='POST')
+  {
+    if(isset($_POST['username'], $_POST['password']))
+    {
+      $username = $_POST['username'];
+      $password = password_hash($_post['password'], PASSWORD_BCRYPT);
+
+		  if (isset($_POST['btn_login']))
+		  {
+        $query = $pdo->prepare("SELET * FROM cms_users WHERE username = ? AND password = ?");
+        $query->bindValue(1,$username);
+        $query->bindValue(2,$password);
+        $query->execute();
+        $num = $query->rowCount();
+        if (!num==1) {
+          $error = 'Incorrect username or password!';
+        }
+        else {
+          header('location: index.php');
+        }
+      }
+		  else if (isset($_POST['btn_register']))
+		  {
+        $query = $pdo->prepare("SELET * FROM cms_users WHERE username = ?");
+        $query->bindValue(1,$username);
+        $query->execute();
+        $num = $query->rowCount();
+        if (num>0) {
+          $error = 'Username already occupied!';
+        }
+        else {
+          $query = $db->prepare("INSERT INTO cms_users(username,password) VALUES(:ufield,:pfield)");
+          $query->bindValue(':ufield',$user,PDO::PARAM_STR);
+          $query->bindValue(':pfield',$password,PDO::PARAM_STR);
+          $query->execute();
+          header("location: admin.php");
+        }
+		  }
+    }
+  }
  ?>
 <html>
   <head>
@@ -25,6 +67,7 @@
     <div id="LoginWindow">
       <div class="wrapper">
         <form action=index.php method="post" autocomplete="off" >
+          <?php if (isset($error)) { ?> <small style="color:#aa0000;"> <?php echo $error; ?></small> <?php } ?>
           <div class="group">
             <input type="text" name="uname" required="required"/><span class="highlight"></span><span class="bar"></span>
             <label>Username</label>
