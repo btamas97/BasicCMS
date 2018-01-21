@@ -187,3 +187,40 @@ label {
   font-size: 15px;
   vertical-align: bottom;
 }
+
+body {
+  background-color: #21252b;
+  color: #abb2b7;
+  margin: 0px 0px 0px 0px;
+}
+
+p {
+  margin: 0px 0px 0px 0px;
+}
+
+a {
+  -o-transition:.2s;
+  -ms-transition:.2s;
+  -moz-transition:.2s;
+  -webkit-transition:.2s;
+  transition:.2s;
+}
+
+a:link {
+  text-decoration: none;
+  color: #abb2b7;
+}
+
+a:hover {
+  color: #007ce2;
+  cursor: pointer;
+}
+
+a:visited {
+  color: #abb2b7;
+}
+
+a:visited:hover {
+  color: #007ce2;
+  cursor: pointer;
+}
