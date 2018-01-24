@@ -212,8 +212,18 @@ li{
   font-size: 25px;
 }
 
+.Bigtitle{
+  font-size: 32px
+}
+
 .DateAuthor {
   font-size: 13px;
+}
+
+.ArticleDateAuthor{
+  margin-top: 5px;
+  margin-bottom: 5px;
+
 }
 
 .Content {
@@ -331,4 +341,17 @@ a:visited:hover {
   border-color: #007ce2;
   border-style: solid;
   margin-bottom: 15px;
+}
+
+#article{
+  margin: auto;
+  width: 50%;
+  width: 800px;
+  background-color: #282c34;
+  border-width: 0px 0px 5px 0px;
+  border-color: #007ce2;
+  border-style: solid;
+  margin-bottom: 15px;
+  padding: 0px 15px 15px 15px;
+
 }

@@ -9,46 +9,46 @@
     $id = $_GET['id'];
     $data = $article->fetch_data($id);
 
-    if($_SERVER['REQUEST_METHOD']=='POST')
+  if($_SERVER['REQUEST_METHOD']=='POST')
+   {
+     if(isset($_POST['username'], $_POST['password']))
      {
-       if(isset($_POST['username'], $_POST['password']))
-       {
-         $username = $_POST['username'];
-         $password = password_hash($_post['password'], PASSWORD_BCRYPT);
+       $username = $_POST['username'];
+       $password = password_hash($_post['password'], PASSWORD_BCRYPT);
 
-   		  if (isset($_POST['btn_login']))
-   		  {
-           $query = $pdo->prepare("SELET * FROM cms_users WHERE username = ? AND password = ?");
-           $query->bindValue(1,$username);
-           $query->bindValue(2,$password);
-           $query->execute();
-           $num = $query->rowCount();
-           if (!num==1) {
-             $error = 'Incorrect username or password!';
-           }
-           else {
-             header('location: index.php');
-           }
+      if (isset($_POST['btn_login']))
+      {
+         $query = $pdo->prepare("SELET * FROM cms_users WHERE username = ? AND password = ?");
+         $query->bindValue(1,$username);
+         $query->bindValue(2,$password);
+         $query->execute();
+         $num = $query->rowCount();
+         if (!num==1) {
+           $error = 'Incorrect username or password!';
          }
-   		  else if (isset($_POST['btn_register']))
-   		  {
-           $query = $pdo->prepare("SELET * FROM cms_users WHERE username = ?");
-           $query->bindValue(1,$username);
+         else {
+           header('location: index.php');
+         }
+       }
+      else if (isset($_POST['btn_register']))
+      {
+         $query = $pdo->prepare("SELET * FROM cms_users WHERE username = ?");
+         $query->bindValue(1,$username);
+         $query->execute();
+         $num = $query->rowCount();
+         if (num>0) {
+           $error = 'Username already occupied!';
+         }
+         else {
+           $query = $db->prepare("INSERT INTO cms_users(username,password) VALUES(:ufield,:pfield)");
+           $query->bindValue(':ufield',$user,PDO::PARAM_STR);
+           $query->bindValue(':pfield',$password,PDO::PARAM_STR);
            $query->execute();
-           $num = $query->rowCount();
-           if (num>0) {
-             $error = 'Username already occupied!';
-           }
-           else {
-             $query = $db->prepare("INSERT INTO cms_users(username,password) VALUES(:ufield,:pfield)");
-             $query->bindValue(':ufield',$user,PDO::PARAM_STR);
-             $query->bindValue(':pfield',$password,PDO::PARAM_STR);
-             $query->execute();
-             header("location: admin.php");
-           }
-   		   }
+           header("location: admin.php");
+         }
        }
      }
+   }
     ?>
     <html>
       <head>
@@ -61,7 +61,7 @@
       <body>
         <div id="header" name="header">
           <div id="logo_name">
-            <a class="din-normal logo">Basic<p class="din-bold logo">CMS</a><p class="din-light logo version">v0.1</p>
+            <a href="index.php" class="din-normal logo">Basic<p class="din-bold logo">CMS</p></a><p class="din-light logo version">v0.1</p>
           </div>
           <div id="login">
             <?php if (isset($_SESSION['logged_in'])) { ?>
@@ -93,13 +93,16 @@
             </form>
           </div>
         </div>
-            <img src="img/<?php echo $article['picture']; ?>" alt="thumbnail" >
-
-            <h4 class="din-bold Title"> <?php echo $article['title']; ?></h4>
-            <p class="din-light DateAuthor"><?php echo $article['author']." - ".$article['date']; ?> </p>
-            <p class="din-normal Content"> <?php echo $article['text']; ?> </p>
+        <div id="content" class="din-normal">
+          <div id="article">
+            <img src="img/<?php echo $data['picture']; ?>" alt="thumbnail" >
+            <p class="din-bold Bigtitle"> <?php echo $data['title']; ?></p>
+            <p class="din-light DateAuthor ArticleDateAuthor"><?php echo $data['author']." - ".$data['date']; ?> </p>
+            <p class="din-normal Content"> <?php echo $data['text']; ?> </p>
+            <br/>
             <a href="index.php">&larr; Back</a>
-
+          </div>
+        </div>
       </body>
       <script>
         document.getElementById("contribute").onclick = showLogin;
@@ -118,10 +121,11 @@
         }
       }
     </script>
-      </html>
+  </html>
     <?php
   }
   else {
+    echo "<script> alert('error getting id')</script>";
     header('location:index.php');
     exit();
   }

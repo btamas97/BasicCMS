@@ -13,9 +13,10 @@
       global $pdo;
 
       $query = $pdo->prepare("SELECT * FROM cms_articles WHERE id = ?");
-      $query->bindValue(1,$article_id);
+      $query->bindValue(1,$article_id, PDO::PARAM_STR);
       $query->execute();
-
+    #  $result=$query->fetch();
+    #  echo $result['text'];
       return $query->fetch();
     }
   }

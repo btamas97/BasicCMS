@@ -14,6 +14,7 @@
    }
    else return $stringLong;
  }
+
  if($_SERVER['REQUEST_METHOD']=='POST')
   {
     if(isset($_POST['username'], $_POST['password']))
@@ -66,7 +67,7 @@
   <body>
     <div id="header" name="header">
       <div id="logo_name">
-        <a class="din-normal logo">Basic<p class="din-bold logo">CMS</a><p class="din-light logo version">v0.1</p>
+        <a href="index.php" class="din-normal logo">Basic<p class="din-bold logo">CMS</p></a><p class="din-light logo version">v0.1</p>
       </div>
       <div id="login">
         <a id='contribute' class='din-normal contribute'>Contribute</a>
