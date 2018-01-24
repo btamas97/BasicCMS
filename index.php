@@ -6,6 +6,14 @@
  $article = new Article;
  $articles = $article->fetch_all();
 
+ function shorten($stringLong){
+   if (strlen($stringLong)>350)
+   {
+     $string = substr($stringLong,0,350)."...";
+     return $string;
+   }
+   else return $stringLong;
+ }
  if($_SERVER['REQUEST_METHOD']=='POST')
   {
     if(isset($_POST['username'], $_POST['password']))
@@ -88,7 +96,7 @@
         <div id="MDlist" class="">
           <div id="ListElement" class="">
             <div class="titleContentPic">
-              <img src="<?php echo $article['picture']; ?>" alt="thumbnail" width="140" height="140">
+              <img src="img/<?php echo $article['picture']; ?>" alt="thumbnail" width="140" height="140">
             </div>
             <div class="titleContent">
               <a href="articleViewer.php?id=<?php echo $article['id']; ?>" class="din-bold Title"> <?php echo $article['title']; ?></a>

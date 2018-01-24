@@ -46,7 +46,7 @@
              $query->execute();
              header("location: admin.php");
            }
-   		  }
+   		   }
        }
      }
     ?>
@@ -93,15 +93,13 @@
             </form>
           </div>
         </div>
-        <div id="article">
-          <div id="headerPic">
-            <img src="<?php echo $article['picture']; ?>" alt="thumbnail" >
-          </div>
-            <h4 href="articleViewer.php?id=<?php echo $article['id']; ?>" class="din-bold Title"> <?php echo $article['title']; ?></h4>
+            <img src="img/<?php echo $article['picture']; ?>" alt="thumbnail" >
+
+            <h4 class="din-bold Title"> <?php echo $article['title']; ?></h4>
             <p class="din-light DateAuthor"><?php echo $article['author']." - ".$article['date']; ?> </p>
             <p class="din-normal Content"> <?php echo $article['text']; ?> </p>
             <a href="index.php">&larr; Back</a>
-        </div>
+
       </body>
       <script>
         document.getElementById("contribute").onclick = showLogin;

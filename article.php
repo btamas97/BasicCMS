@@ -14,18 +14,9 @@
 
       $query = $pdo->prepare("SELECT * FROM cms_articles WHERE id = ?");
       $query->bindValue(1,$article_id);
-      $query->execute()
+      $query->execute();
 
       return $query->fetch();
-    }
-
-    public function shorten($stringLong){
-      if (strlen($string)>350)
-      {
-        $string = substr($stringLong),0,350);
-        $string = substr($string,0,strpos($string, ' '))."...";
-        return $string;
-      }
     }
   }
  ?>
