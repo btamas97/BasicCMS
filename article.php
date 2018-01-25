@@ -3,7 +3,7 @@
     public function fetch_all(){
       $pdo = connect();
 
-      $query = $pdo->prepare("SELECT * FROM cms_articles");
+      $query = $pdo->prepare("SELECT * FROM cms_articles ORDER BY id desc");
       $query->execute();
 
       return $query->fetchAll();

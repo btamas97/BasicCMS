@@ -30,7 +30,7 @@
   }
   catch(PDOException $e)
   {
-    echo $e->getMessage();
+    #echo $e->getMessage();
   }
 ?>
 <html>
@@ -53,14 +53,15 @@
         <li><p id='contribute' class='din-normal contribute MenuList'> Hi <?php echo $_SESSION['username'];?>!</php>
       </div>
     </div>
-    <div id="content" class="din-normal">
+    <div id="uploadEditForm" class="din-normal">
       <form action="upload.php" method="post" autocomplete="off" enctype="multipart/form-data">
         <div class="group">
           <input type="text" name="title" required="required"/><span class="highlight"></span><span class="bar"></span>
           <label>Title</label>
         </div>
         <div class="group">
-          <textarea row="10" cols="50" name="content" placeholder="Article"> </textarea><br><span class="highlight"></span><span class="bar"></span>
+          <textarea row="20" cols="50" name="content" placeholder="Article"> </textarea><span class="highlight"></span><span class="bar"></span>
+          <label>Article</label>
         </div>
         <div class="group">
           <input type="file" name="picture" required="required"/><span class="highlight"></span><span class="bar"></span>

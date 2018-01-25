@@ -312,7 +312,14 @@ a:visited:hover {
   margin-right: 5px;
   margin-bottom: 5px;
 }
-
+#uploadEditForm{
+  margin-top: 60px;
+  text-align: justify;
+  text-justify: inter-word;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
 #logo_name {
   float: left;
   margin-left: 5px;

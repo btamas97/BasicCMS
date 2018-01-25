@@ -15,6 +15,7 @@
 
     if (isset($_POST['title']))
     {
+      $id=$_POST['id'];
       $title= $_POST['title'];
       $query = $pdo->prepare("UPDATE cms_articles SET title=:title WHERE id=:id");
       $query->bindValue(':title',$title,PDO::PARAM_STR);
@@ -24,6 +25,7 @@
 
     if (isset($_POST['author']))
     {
+      $id=$_POST['id'];
       $author=$_SESSION['username'];
       $query = $pdo->prepare("UPDATE cms_articles SET author=:auth WHERE id=:id");
       $query->bindValue(':auth',$author,PDO::PARAM_STR);
@@ -33,6 +35,7 @@
 
     if (isset($_POST['content']))
     {
+      $id=$_POST['id'];
       $article=$_POST['content'];
       $query = $pdo->prepare("UPDATE cms_articles SET text=:content WHERE id=:id");
       $query->bindValue(':content',$content,PDO::PARAM_STR);
@@ -42,6 +45,7 @@
 
     if (isset($_FILES['picture']['name'])&&($_FILES['picture']['name']!=""))
 	   {
+         $id=$_POST['id'];
          $query = $pdo->prepare("SELECT picture FROM cms_articles WHERE id=:id");
          $query->bindValue(':id', $id, PDO::PARAM_STR);
          $query->execute();
@@ -86,14 +90,16 @@
         <li><p id='contribute' class='din-normal contribute MenuList'> Hi <?php echo $_SESSION['username'];?>!</php>
       </div>
     </div>
-    <div id="content" class="din-normal">
+    <div id="uploadEditForm" class="din-normal">
       <form action="edit.php" method="post" autocomplete="off" enctype="multipart/form-data">
         <div class="group">
+          <input type="hidden" name="id" value="<?php echo $data['id'] ?>" />
           <input type="text" name="title" value="<?php echo $data['title']; ?>" required="required"/><span class="highlight"></span><span class="bar"></span>
           <label>Title</label>
         </div>
         <div class="group">
-          <textarea row="10" cols="50" name="content" placeholder="Article"> <?php echo $data['text']; ?></textarea><span class="highlight"></span><span class="bar"></span>
+          <textarea row="20" cols="50" name="content" placeholder="Article"> <?php echo $data['text']; ?></textarea><span class="highlight"></span><span class="bar"></span>
+          <label>Article</label>
         </div>
         <div class="group">
             <img src="img/<?php echo $data['picture']; ?>" alt="thumbnail" width="140" height="140">
@@ -106,5 +112,4 @@
     </div>
   </body>
 </html>
-<?php header('location: admin.php');
- exit(); } ?>
+<?php  } ?>
