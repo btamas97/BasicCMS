@@ -17,7 +17,6 @@
     }
     else {
         $user= $query->fetch(PDO::FETCH_ASSOC);
-        echo $user['username'];
         if ( password_verify($_POST['password'], $user['password']) ) {
           $_SESSION['username'] = $user['username'];
           header("location: admin.php");
@@ -29,6 +28,6 @@
      }
   }
   else {
-    $_SESSION['message']= "nem kaptam post értéket";
+    $_SESSION['message']= "Post data was not recieved!";
   }
  ?>
