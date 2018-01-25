@@ -63,6 +63,7 @@
          $query->bindValue(':picture',$picture,PDO::PARAM_STR);
          $query->bindValue(':id',$id,PDO::PARAM_STR);
          $query->execute();
+
 		 }
 ?>
 <html>
@@ -95,7 +96,7 @@
           <textarea row="10" cols="50" name="content" placeholder="Article"> <?php echo $data['text']; ?></textarea><span class="highlight"></span><span class="bar"></span>
         </div>
         <div class="group">
-            <img src="img/<?php echo $article['picture']; ?>" alt="thumbnail" width="140" height="140">
+            <img src="img/<?php echo $data['picture']; ?>" alt="thumbnail" width="140" height="140">
           <input type="file" name="picture" required="required"/><span class="highlight"></span><span class="bar"></span>
         </div>
         <div class="btn-box">
@@ -105,4 +106,5 @@
     </div>
   </body>
 </html>
-<?php } ?>
+<?php header('location: admin.php');
+ exit(); } ?>

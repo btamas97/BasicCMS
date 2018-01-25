@@ -301,6 +301,9 @@ a:visited:hover {
   width: 800px;
   height: auto;
 }
+.imgThumbnail {
+    object-fit: cover;
+}
 #content {
   margin-top: 50px;
   text-align: justify;

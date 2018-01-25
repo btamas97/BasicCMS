@@ -67,10 +67,15 @@
         <div id="content" class="din-normal">
           <div id="articlePicture">
               <img src="img/<?php echo $data['picture']; ?>" alt="thumbnail" class="img">
-          </div>          
+          </div>
           <div id="article">
             <p class="din-bold Bigtitle"> <?php echo $data['title']; ?></p>
-            <p class="din-light DateAuthor ArticleDateAuthor"><?php echo $data['author']." - ".$data['date']; ?> </p>
+            <p class="din-light DateAuthor ArticleDateAuthor"><?php echo $data['author']." - ".$data['date']; ?>
+              <?php if (isset($_SESSION['username'])){ ?>
+                <a href="edit.php?id=<?php echo $data['id']; ?>">Edit</a>
+                <a href="delete.php?id=<?php echo $data['id']; ?>"> Delete</a>
+            <?php  } ?>
+            </p>
             <p class="din-normal Content"> <?php echo $data['text']; ?> </p>
             <br/>
             <a href="index.php">&larr; Back</a>
