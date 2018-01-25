@@ -9,7 +9,7 @@
 
   $title= $_POST['title'];
   $author=$_SESSION['username'];
-  $article=$_POST['article'];
+  $content=nl2br($_POST['content']);
   $picture=trim($_FILES['picture']['name']);
   $picture=rand().$picture;
   move_uploaded_file($_FILES['picture']['tmp_name'],"img/".$picture);
@@ -19,7 +19,7 @@
     $query = $pdo->prepare("INSERT INTO cms_articles(title,author,text,picture) VALUES(:tfield,:afield,:cfield,:pfield)");
     $query->bindValue(':tfield',$title,PDO::PARAM_STR);
     $query->bindValue(':afield',$author,PDO::PARAM_STR);
-    $query->bindValue(':cfield',$article,PDO::PARAM_STR);
+    $query->bindValue(':cfield',$content,PDO::PARAM_STR);
     $query->bindValue(':pfield',$picture,PDO::PARAM_STR);
     $query->execute();
     $num = $query->rowCount();
@@ -60,7 +60,7 @@
           <label>Title</label>
         </div>
         <div class="group">
-          <textarea row="10" cols="50" name="article" placeholder="Article"> </textarea><br><span class="highlight"></span><span class="bar"></span>
+          <textarea row="10" cols="50" name="content" placeholder="Article"> </textarea><br><span class="highlight"></span><span class="bar"></span>
         </div>
         <div class="group">
           <input type="file" name="picture" required="required"/><span class="highlight"></span><span class="bar"></span>

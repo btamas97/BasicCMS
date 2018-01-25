@@ -17,6 +17,5 @@
       $query->execute();
       return $query->fetch();
     }
-    
   }
  ?>
