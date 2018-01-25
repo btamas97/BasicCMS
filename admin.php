@@ -41,7 +41,7 @@
           <?php foreach ($articles as $article) {?>
             <div id="ListElement" class="">
               <div class="titleContentPic">
-                <img src="<?php echo $article['picture']; ?>" alt="thumbnail" width="140" height="140">
+                <img src="img/<?php echo $article['picture']; ?>" alt="thumbnail" width="140" height="140">
               </div>
               <div class="titleContent">
                 <a href="articleViewer.php?id=<?php echo $article['id']; ?>" class="din-bold Title"> <?php echo $article['title']; ?></a>

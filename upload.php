@@ -1,7 +1,7 @@
 <?php
   session_start();
   include('connect.php');
-  header('Content-type: text/html; charset=utf8')
+  header('Content-type: text/html; charset=utf8');
   $pdo = connect();
   if (!isset($_SESSION['username'])) {
     header('location: index.php');
