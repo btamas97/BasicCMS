@@ -1,9 +1,36 @@
 <?php
   session_start();
   include('connect.php');
-
+  header('Content-type: text/html; charset=utf8')
+  $pdo = connect();
   if (!isset($_SESSION['username'])) {
     header('location: index.php');
+  }
+
+  $title= $_POST['title'];
+  $author=$_SESSION['username'];
+  $article=$_POST['article'];
+  $picture=trim($_FILES['picture']['name']);
+  $picture=rand().$picture;
+  move_uploaded_file($_FILES['picture']['tmp_name'],"img/".$picture);
+
+  try
+  {
+    $query = $pdo->prepare("INSERT INTO cms_articles(title,author,text,picture) VALUES(:tfield,:afield,:cfield,:pfield)");
+    $query->bindValue(':tfield',$title,PDO::PARAM_STR);
+    $query->bindValue(':afield',$author,PDO::PARAM_STR);
+    $query->bindValue(':cfield',$article,PDO::PARAM_STR);
+    $query->bindValue(':pfield',$picture,PDO::PARAM_STR);
+    $query->execute();
+    $num = $query->rowCount();
+
+    $_SESSION['message'] ="Upload Succesful!";
+    header("location: admin.php");
+    exit();
+  }
+  catch(PDOException $e)
+  {
+    echo $e->getMessage();
   }
 ?>
 <html>
