@@ -22,8 +22,8 @@
      $query = $pdo->prepare("DELETE FROM cms_articles WHERE id=:id");
      $query->bindValue(':id', $id, PDO::PARAM_STR);
      $query->execute();
-     $_SESSION['message']="Record deleted!"
-     header("refresh:0;url=index.php" );
+     $_SESSION['message']="Record deleted!";
+     header("refresh:0;url=admin.php" );
      exit();
   }
 ?>
