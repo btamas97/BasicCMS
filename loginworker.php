@@ -14,6 +14,8 @@
 
     if (num==0) {
       $_SESSION['message'] = 'User does not exist!';
+      header('error.php');
+      exit();
     }
     else {
         $user= $query->fetch(PDO::FETCH_ASSOC);
@@ -24,10 +26,14 @@
         }
         else {
           $_SESSION['message'] = "Wrong password!";
+          header('error.php');
+          exit();
         }
      }
   }
   else {
     $_SESSION['message']= "Post data was not recieved!";
+    header('error.php');
+    exit();
   }
  ?>
