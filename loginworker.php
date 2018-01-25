@@ -13,8 +13,8 @@
     $num = $query->rowCount();
 
     if (num==0) {
-      $_SESSION['message'] = 'User does not exist!';
-      header('error.php');
+      $_SESSION['message'] = 'User does not exist! '.$username;
+      header('location: error.php');
       exit();
     }
     else {
@@ -26,14 +26,14 @@
         }
         else {
           $_SESSION['message'] = "Wrong password!";
-          header('error.php');
+          header('location: error.php');
           exit();
         }
      }
   }
   else {
     $_SESSION['message']= "Post data was not recieved!";
-    header('error.php');
+    header('location: error.php');
     exit();
   }
  ?>

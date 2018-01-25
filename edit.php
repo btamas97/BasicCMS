@@ -24,7 +24,7 @@
     }
     else {
       $_SESSION['message'] = "No title set.";
-      header('error.php');
+      header('location: error.php');
       exit();
     }
 
@@ -39,7 +39,7 @@
     }
     else {
       $_SESSION['message'] = "No author set.";
-      header('error.php');
+      header('location: error.php');
       exit();
     }
 
@@ -54,7 +54,7 @@
     }
     else {
       $_SESSION['message'] = "No content set.";
-      header('error.php');
+      header('location: error.php');
       exit();
     }
 
@@ -67,7 +67,7 @@
          $rows =$query->rowCount();
          if (  $rows == 0  ){
            $_SESSION['message'] = "No such record!";
-           header('error.php');
+           header('location: error.php');
            exit();
          }
          else {
@@ -87,8 +87,8 @@
 
 		 }
      else {
-       $_SESSION['message'] = "No picture set."; 
-       header('error.php');
+       $_SESSION['message'] = "No picture set.";
+       header('location: error.php');
        exit();
      }
 
