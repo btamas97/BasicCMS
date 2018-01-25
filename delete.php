@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include('connect.php')
+  include('connect.php');
   $pdo = connect();
 
   if(isset($_GET['id']))
