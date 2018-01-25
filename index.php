@@ -1,11 +1,9 @@
 <?php
  session_start();
- include_once('connect.php');
+ include('connect.php');
  include_once('article.php');
-
  $article = new Article;
  $articles = $article->fetch_all();
-
  function shorten($stringLong){
    if (strlen($stringLong)>350)
    {
@@ -17,43 +15,14 @@
 
  if($_SERVER['REQUEST_METHOD']=='POST')
   {
-    if(isset($_POST['username'], $_POST['password']))
+    if (isset($_POST['btn_login']))
     {
-      $username = $_POST['username'];
-      $password = password_hash($_post['password'], PASSWORD_BCRYPT);
-
-		  if (isset($_POST['btn_login']))
-		  {
-        $query = $pdo->prepare("SELET * FROM cms_users WHERE username = ? AND password = ?");
-        $query->bindValue(1,$username);
-        $query->bindValue(2,$password);
-        $query->execute();
-        $num = $query->rowCount();
-        if (!num==1) {
-          $error = 'Incorrect username or password!';
-        }
-        else {
-          header('location: index.php');
-        }
-      }
-		  else if (isset($_POST['btn_register']))
-		  {
-        $query = $pdo->prepare("SELET * FROM cms_users WHERE username = ?");
-        $query->bindValue(1,$username);
-        $query->execute();
-        $num = $query->rowCount();
-        if (num>0) {
-          $error = 'Username already occupied!';
-        }
-        else {
-          $query = $db->prepare("INSERT INTO cms_users(username,password) VALUES(:ufield,:pfield)");
-          $query->bindValue(':ufield',$user,PDO::PARAM_STR);
-          $query->bindValue(':pfield',$password,PDO::PARAM_STR);
-          $query->execute();
-          header("location: admin.php");
-        }
-		  }
+      require('loginworker.php');
     }
+    else if (isset($_POST['btn_register']))
+    {
+       require('registerworker.php');
+     }
   }
  ?>
 <html>
@@ -76,13 +45,12 @@
     <div id="LoginWindow">
       <div class="wrapper">
         <form action=index.php method="post" autocomplete="off" >
-          <?php if (isset($error)) { ?> <small style="color:#aa0000;"> <?php echo $error; ?></small> <?php } ?>
           <div class="group">
-            <input type="text" name="uname" required="required"/><span class="highlight"></span><span class="bar"></span>
+            <input type="text" name="username" required="required"/><span class="highlight"></span><span class="bar"></span>
             <label>Username</label>
           </div>
           <div class="group">
-            <input type="password" name="pwd" required="required"/><span class="highlight"></span><span class="bar"></span>
+            <input type="password" name="password" required="required"/><span class="highlight"></span><span class="bar"></span>
             <label>Password</label>
           </div>
           <div class="btn-box">

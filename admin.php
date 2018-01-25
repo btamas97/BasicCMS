@@ -1,7 +1,18 @@
 <?php
   session_start();
-  include_once('connect.php');
-  if (!isset($_SESSION['logged_in'])); {
+  include('connect.php');
+  include_once('article.php');
+  $article = new Article;
+  $articles = $article->fetch_all();
+  function shorten($stringLong){
+    if (strlen($stringLong)>350)
+    {
+      $string = substr($stringLong,0,350)."...";
+      return $string;
+    }
+    else return $stringLong;
+  }
+  if (!isset($_SESSION['username'])) {
     header('location: index.php');
   }
 ?>
@@ -34,12 +45,13 @@
               </div>
               <div class="titleContent">
                 <a href="articleViewer.php?id=<?php echo $article['id']; ?>" class="din-bold Title"> <?php echo $article['title']; ?></a>
-                <p class="din-light DateAuthor"><?php echo $article['author']." - ".$article['date']; ?> </p>
+                <p class="din-light DateAuthor"><?php echo $article['author']." - ".$article['date']; ?>
+                  <a href="edit.php?id=<?php echo $article['id']; ?>">Edit</a>
+                  <a href="delete.php?id=<?php echo $article['id']; ?>"> Delete</a></p>
                 <p class="din-normal Content">
                   <?php echo shorten($article['text']); ?></p>
               </div>
-                <li><a href="edit.php?id=<?php echo $article['id']; ?>">Edit</a></li>
-                <li><a href="delete.php?id=<?php echo $article['id']; ?>"> Delete</a></li>          
+
             </div>
           <?php } ?>
         </div>
