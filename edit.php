@@ -22,6 +22,11 @@
       $query->bindValue(':id',$id,PDO::PARAM_STR);
       $query->execute();
     }
+    else {
+      $_SESSION['message'] = "No title set.";
+      header('error.php');
+      exit();
+    }
 
     if (isset($_POST['author']))
     {
@@ -31,6 +36,11 @@
       $query->bindValue(':auth',$author,PDO::PARAM_STR);
       $query->bindValue(':id',$id,PDO::PARAM_STR);
       $query->execute();
+    }
+    else {
+      $_SESSION['message'] = "No author set.";
+      header('error.php');
+      exit();
     }
 
     if (isset($_POST['content']))
@@ -42,6 +52,11 @@
       $query->bindValue(':id',$id,PDO::PARAM_STR);
       $query->execute();
     }
+    else {
+      $_SESSION['message'] = "No content set.";
+      header('error.php');
+      exit();
+    }
 
     if (isset($_FILES['picture']['name'])&&($_FILES['picture']['name']!=""))
 	   {
@@ -52,6 +67,8 @@
          $rows =$query->rowCount();
          if (  $rows == 0  ){
            $_SESSION['message'] = "No such record!";
+           header('error.php');
+           exit();
          }
          else {
            $file= $query->fetch(PDO::FETCH_ASSOC);
@@ -69,6 +86,12 @@
          $query->execute();
 
 		 }
+     else {
+       $_SESSION['message'] = "No picture set."; 
+       header('error.php');
+       exit();
+     }
+
 ?>
 <html>
   <head>
