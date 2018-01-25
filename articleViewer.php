@@ -36,10 +36,10 @@
           </div>
           <div id="login">
             <?php if (isset($_SESSION['username'])) { ?>
-              <li><a id='contribute' class='din-normal contribute' href="admin.php">Main page</a><li>
-              <li><a id='contribute' class='din-normal contribute' href="upload.php">Upload</a><li>
-              <li><p id='contribute' class='din-normal contribute'> Hi <?php echo $_SESSION['username'];?>!</php>
-              <li><a id='contribute' class='din-normal contribute' href="logout.php">Log out</a><li>
+              <li><a id='contribute' class='din-normal contribute MenuList' href="logout.php">Log out</a><li>
+              <li><a id='contribute' class='din-normal contribute MenuList' href="upload.php">Upload</a><li>
+              <li><a id='contribute' class='din-normal contribute MenuList' href="admin.php">Main page</a><li>
+              <li><p id='contribute' class='din-normal contribute MenuList'> Hi <?php echo $_SESSION['username'];?>!</php>
           <?php  }
             else{ ?>
               <a id='contribute' class='din-normal contribute'>Contribute</a>
@@ -65,8 +65,10 @@
           </div>
         </div>
         <div id="content" class="din-normal">
+          <div id="articlePicture">
+              <img src="img/<?php echo $data['picture']; ?>" alt="thumbnail" class="img">
+          </div>          
           <div id="article">
-            <img src="img/<?php echo $data['picture']; ?>" alt="thumbnail" >
             <p class="din-bold Bigtitle"> <?php echo $data['title']; ?></p>
             <p class="din-light DateAuthor ArticleDateAuthor"><?php echo $data['author']." - ".$data['date']; ?> </p>
             <p class="din-normal Content"> <?php echo $data['text']; ?> </p>
