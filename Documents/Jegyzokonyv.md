@@ -1,10 +1,10 @@
 # Jegyzõkönyv
 A megrendelõk és a fejlesztõk összeültek, hogy megtárgyalják a projektet. A megbeszélés helyszíne Budapest Top Stories Kft, idõpontja 2018.december 18.
 
-###Fejlesztõ
+### Fejlesztõ
 Baráth Tamás
 
-###Megrendelõ
+### Megrendelõ
 Top Stories Kft.
 
 A megrendelõ felvázolta igényeit, amelyet egyeztetett a fejlesztõvel.
@@ -18,7 +18,7 @@ A megrendelõ felvázolta igényeit, amelyet egyeztetett a fejlesztõvel.
 - Teljes cikk megjelenítése új oldalon.
 - Maximum 40 napos fejlesztési idõ
 
-###Részletes programfunkciók a megbeszéltek alapján:
+### Részletes programfunkciók a megbeszéltek alapján:
 
 
 - Navigációs sáv, ez minden oldalon megtalálható (kivéve az error megjelenítõt)
