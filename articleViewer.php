@@ -27,12 +27,12 @@
         <meta name="description" content="Basic CMS">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-        <title> Basic CMS </title>
+        <title> Basic CMS - Article </title>
       </head>
       <body>
         <div id="header" name="header">
           <div id="logo_name">
-            <a href="index.php" class="din-normal logo">Basic<p class="din-bold logo">CMS</p></a><p class="din-light logo version">v0.1</p>
+            <a href="index.php" class="din-normal logo">Basic<p class="din-bold logo">CMS</p></a><p class="din-light logo version">v1.0</p>
           </div>
           <div id="login">
             <?php if (isset($_SESSION['username'])) { ?>

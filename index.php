@@ -36,7 +36,7 @@
   <body>
     <div id="header" name="header">
       <div id="logo_name">
-        <a href="index.php" class="din-normal logo">Basic<p class="din-bold logo">CMS</p></a><p class="din-light logo version">v0.1</p>
+        <a href="index.php" class="din-normal logo">Basic<p class="din-bold logo">CMS</p></a><p class="din-light logo version">v1.0</p>
       </div>
       <div id="login">
         <a id='contribute' class='din-normal contribute'>Contribute</a>

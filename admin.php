@@ -22,12 +22,12 @@
     <meta name="description" content="Basic CMS">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <title> Basic CMS </title>
+    <title> Basic CMS - Admin </title>
   </head>
   <body>
     <div id="header" name="header">
       <div id="logo_name">
-        <a class="din-normal logo">Basic<p class="din-bold logo">CMS</a><p class="din-light logo version">v0.1</p>
+        <a class="din-normal logo">Basic<p class="din-bold logo">CMS</a><p class="din-light logo version">v1.0</p>
       </div>
       <div id="login">
         <li><a id='contribute' class='din-normal contribute MenuList' href="logout.php">Log out</a><li>
