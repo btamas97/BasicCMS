@@ -12,8 +12,9 @@
     $query->bindValue(1,$username);
     $query->execute();
     $num = $query->rowCount();
-    if (num>0) {
-      $error = 'User already exists!';
+    if ($num>0) {
+      $_SESSION['message']= 'User already exists!';
+      header('location: error.php');
     }
     else {
       try {
