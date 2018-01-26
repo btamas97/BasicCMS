@@ -13,85 +13,29 @@
     $id = $_GET['id'];
     $data = $article->fetch_data($id);
 
-    if (isset($_POST['title']))
+    if(isset($_POST['btn_save']))
     {
-      $id=$_POST['id'];
-      $title= $_POST['title'];
-      $query = $pdo->prepare("UPDATE cms_articles SET title=:title WHERE id=:id");
-      $query->bindValue(':title',$title,PDO::PARAM_STR);
-      $query->bindValue(':id',$id,PDO::PARAM_STR);
-      $query->execute();
-    }
-    else {
-      $_SESSION['message'] = "No title set.";
-      header('location: error.php');
-      exit();
-    }
-
-    if (isset($_POST['author']))
-    {
-      $id=$_POST['id'];
-      $author=$_SESSION['username'];
-      $query = $pdo->prepare("UPDATE cms_articles SET author=:auth WHERE id=:id");
-      $query->bindValue(':auth',$author,PDO::PARAM_STR);
-      $query->bindValue(':id',$id,PDO::PARAM_STR);
-      $query->execute();
-    }
-    else {
-      $_SESSION['message'] = "No author set.";
-      header('location: error.php');
-      exit();
-    }
-
-    if (isset($_POST['content']))
-    {
-      $id=$_POST['id'];
-      $article=$_POST['content'];
-      $query = $pdo->prepare("UPDATE cms_articles SET text=:content WHERE id=:id");
-      $query->bindValue(':content',$content,PDO::PARAM_STR);
-      $query->bindValue(':id',$id,PDO::PARAM_STR);
-      $query->execute();
-    }
-    else {
-      $_SESSION['message'] = "No content set.";
-      header('location: error.php');
-      exit();
-    }
-
-    if (isset($_FILES['picture']['name'])&&($_FILES['picture']['name']!=""))
-	   {
-         $id=$_POST['id'];
-         $query = $pdo->prepare("SELECT picture FROM cms_articles WHERE id=:id");
-         $query->bindValue(':id', $id, PDO::PARAM_STR);
-         $query->execute();
-         $rows =$query->rowCount();
-         if (  $rows == 0  ){
-           $_SESSION['message'] = "No such record!";
-           header('location: error.php');
-           exit();
-         }
-         else {
-           $file= $query->fetch(PDO::FETCH_ASSOC);
-           if(is_file($file)){
-              unlink($file);
-           }
+      $title =  $_POST['title'];
+      $author = $_SESSION['username'];
+      $content = $_POST['content'];
+      echo $id.' '.$title.' '.$author.' '.$content;
+      if (isset($_FILES['picture']['name'])&&($_FILES['picture']['name']!=""))
+  	   {
+         $file = $data['picture'];
+         if(is_file($file)){
+         unlink($file);
          }
          $picture=trim($_FILES['picture']['name']);
          $picture=rand().$picture;
          move_uploaded_file($_FILES['picture']['tmp_name'],"img/".$picture);
 
-         $query = $pdo->prepare("UPDATE cms_articles SET text=:picture WHERE id=:id");
-         $query->bindValue(':picture',$picture,PDO::PARAM_STR);
-         $query->bindValue(':id',$id,PDO::PARAM_STR);
-         $query->execute();
+         $sql = "UPDATE cms_articles SET title=?, author =?, content=?, picture =? WHERE id=?";
+         $pdo->prepare($sql)->execute([$title,$author,$content,$picture,$id]);
 
-		 }
-     else {
-       $_SESSION['message'] = "No picture set.";
-       header('location: error.php');
-       exit();
-     }
-
+         header('location: admin.php');
+         exit();
+  		 }
+    }
 ?>
 <html>
   <head>
@@ -114,14 +58,14 @@
       </div>
     </div>
     <div id="uploadEditForm" class="din-normal">
-      <form action="edit.php" method="post" autocomplete="off" enctype="multipart/form-data">
+      <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
         <div class="group">
           <input type="hidden" name="id" value="<?php echo $data['id'] ?>" />
           <input type="text" name="title" value="<?php echo $data['title']; ?>" required="required"/><span class="highlight"></span><span class="bar"></span>
           <label>Title</label>
         </div>
         <div class="group">
-          <textarea row="20" cols="50" name="content" placeholder="Article"> <?php echo $data['text']; ?></textarea><span class="highlight"></span><span class="bar"></span>
+          <textarea row="20" cols="50" name="content" placeholder="Article"> <?php echo $data['content']; ?></textarea><span class="highlight"></span><span class="bar"></span>
           <label>Article</label>
         </div>
         <div class="group">
@@ -129,7 +73,7 @@
           <input type="file" name="picture" required="required"/><span class="highlight"></span><span class="bar"></span>
         </div>
         <div class="btn-box">
-          <button class="btn btn-submit" name="btn_login" type="submit">Save Modifications</button>
+          <button class="btn btn-submit" name="btn_save" type="submit">Save Modifications</button>
         </div>
       </form>
     </div>

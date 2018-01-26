@@ -76,7 +76,7 @@
                 <a href="delete.php?id=<?php echo $data['id']; ?>"> Delete</a>
             <?php  } ?>
             </p>
-            <p class="din-normal Content"> <?php echo $data['text']; ?> </p>
+            <p class="din-normal Content"> <?php echo $data['content']; ?> </p>
             <br/>
             <a href="index.php">&larr; Back</a>
           </div>

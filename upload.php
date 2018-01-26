@@ -16,7 +16,7 @@
 
   try
   {
-    $query = $pdo->prepare("INSERT INTO cms_articles(title,author,text,picture) VALUES(:tfield,:afield,:cfield,:pfield)");
+    $query = $pdo->prepare("INSERT INTO cms_articles(title,author,content,picture) VALUES(:tfield,:afield,:cfield,:pfield)");
     $query->bindValue(':tfield',$title,PDO::PARAM_STR);
     $query->bindValue(':afield',$author,PDO::PARAM_STR);
     $query->bindValue(':cfield',$content,PDO::PARAM_STR);

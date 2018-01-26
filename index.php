@@ -71,7 +71,7 @@
               <a href="articleViewer.php?id=<?php echo $article['id']; ?>" class="din-bold Title"> <?php echo $article['title']; ?></a>
               <p class="din-light DateAuthor"><?php echo $article['author']." - ".$article['date']; ?> </p>
               <p class="din-normal Content">
-                <?php echo shorten($article['text']); ?></p>
+                <?php echo shorten($article['content']); ?></p>
             </div>
           </div>
         <?php } ?>

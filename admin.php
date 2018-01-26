@@ -49,7 +49,7 @@
                   <a href="edit.php?id=<?php echo $article['id']; ?>">Edit</a>
                   <a href="delete.php?id=<?php echo $article['id']; ?>"> Delete</a></p>
                 <p class="din-normal Content">
-                  <?php echo shorten($article['text']); ?></p>
+                  <?php echo shorten($article['content']); ?></p>
               </div>
             </div>
           <?php } ?>
