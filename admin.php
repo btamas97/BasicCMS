@@ -51,7 +51,6 @@
                 <p class="din-normal Content">
                   <?php echo shorten($article['text']); ?></p>
               </div>
-
             </div>
           <?php } ?>
         </div>

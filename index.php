@@ -60,9 +60,9 @@
         </form>
       </div>
     </div>
-    <?php foreach ($articles as $article) {?>
-      <div id="content" class="din-normal">
-        <div id="MDlist" class="">
+    <div id="content" class="din-normal">
+      <div id="MDlist" class="">
+        <?php foreach ($articles as $article) {?>
           <div id="ListElement" class="">
             <div class="titleContentPic">
               <img src="img/<?php echo $article['picture']; ?>" alt="thumbnail" class="imgThumbnail" width="150" height="150">
@@ -74,9 +74,9 @@
                 <?php echo shorten($article['text']); ?></p>
             </div>
           </div>
-        </div>
+        <?php } ?>
       </div>
-    <?php } ?>
+    </div>
   </body>
   <script>
     document.getElementById("contribute").onclick = showLogin;
