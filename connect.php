@@ -1,9 +1,9 @@
 <?php
   function connect(){
-  $host = 'c252um.forpsi.com';
-  $db   = 'b6369';
-  $user = 'b6369';
-  $pass = 'SBm38Js';
+  $host = '';
+  $db   = '';
+  $user = '';
+  $pass = '';
   $charset = 'utf8';
 
   $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
